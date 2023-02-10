@@ -3,6 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+//require method overrride MW
+//...by req using same name we installed it with
+//returns fn for config MW
+var methodOverride = require('method-override');
 
 require('dotenv').config();
 //connect to ATLAS/MongoDB after the dotenv has processed the .env file
@@ -22,6 +26,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+//mount method override MW by adding it to MW pipeline and invoking it
+//*what was returned in req was a fn for configuring the MW
+//needs name of query param (? in URL) to look for in req
+//(^ its "_method" here)
+//query params can send extra info to server using URL
+//...w/o impacting routing (bc it doesnt change the path)
+app.use(methodOverride('_method'));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
