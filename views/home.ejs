@@ -1,3 +1,13 @@
 <%- include('./partials/header') %>
-
+<main>
+    <% if (user) { %>
+        <h1><%= title %></h1>
+        <form id="add-tweet" method="POST"
+          action="/users/<%= user._id %>/tweets">
+          <textarea name="content"></textarea>
+          <br>
+          <input type="submit" value="Tweet">
+        </form>
+    <% } %>
+</main>
 <%- include('./partials/footer') %>

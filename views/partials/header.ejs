@@ -11,12 +11,9 @@
   <nav>
     <% if (user) { %>
       <a href="/home" <%- title === 'Home' ? 'class="active"' : '' %>>Home</a>
+      <a href="/user">Profile</a>
+      <a href="/user/likes">Likes</a>
+      <a href="/user/bookmarks">Bookmarks</a>
       <a href="/logout">LOG OUT</a>
       <% } %>
   </nav>
-  <main>
-    <% if (user) { %>
-    <h1><%= title %></h1>
-    <a href="/home/new"	<%- title === 'Tweet Message' ? 'class="active"' : '' %>>
-      Add Tweet</a>
-    <% } %>

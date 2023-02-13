@@ -57,9 +57,9 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/home', homeRouter);
+app.use('/', indexRouter); //log in page
+app.use('/home', homeRouter); //after log in, home page
+app.use('/user', usersRouter); //after log in/user pages
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

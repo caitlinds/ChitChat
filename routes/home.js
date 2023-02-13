@@ -4,7 +4,7 @@ const ensureLoggedIn = require('../config/ensureLoggedIn');
 
 /* GET home page. */
 router.get('/', ensureLoggedIn, function(req, res, next) {
-  res.render('home', {title: "home"})
+  res.render('home', {title: "Home"})
 });
 
 module.exports = router;
