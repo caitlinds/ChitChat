@@ -3,17 +3,23 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session');
+var passport = require('passport');
 //require method overrride MW
 //...by req using same name we installed it with
 //returns fn for config MW
 var methodOverride = require('method-override');
 
+// Load the "secrets" in the .env file
 require('dotenv').config();
 //connect to ATLAS/MongoDB after the dotenv has processed the .env file
 require('./config/database');
+//configure passport mw
+require('./config/passport');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var homeRouter = require('./routes/home');
 
 var app = express();
 
@@ -25,8 +31,6 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
 //mount method override MW by adding it to MW pipeline and invoking it
 //*what was returned in req was a fn for configuring the MW
 //needs name of query param (? in URL) to look for in req
@@ -34,9 +38,28 @@ app.use(express.static(path.join(__dirname, 'public')));
 //query params can send extra info to server using URL
 //...w/o impacting routing (bc it doesnt change the path)
 app.use(methodOverride('_method'));
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: true
+}))
+
+//passport mw
+//creates req.user
+app.use(passport.initialize());
+app.use(passport.session());
+
+// provides req.user to all templates
+app.use(function (req, res, next) {
+  res.locals.user = req.user;
+  next();
+});
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/home', homeRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
