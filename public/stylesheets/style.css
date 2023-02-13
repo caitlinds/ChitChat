@@ -8,10 +8,9 @@ body {
   margin: 0;
   height: 100vh;
   display: grid;
-  grid-template-rows: 50px 1fr;
+  grid-template-columns: 1fr 2fr;
   grid-template-areas: 
-    "nav"
-    "main"
+    "nav main"
 }
 
 body > nav {
@@ -187,4 +186,21 @@ li {
 .review-user img {
   border-radius: 50%;
   height: 40px;
+}
+
+main > a {
+  margin: 20px;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+main > a:hover:not(.active) {
+  color: white;
+  background-color: #424748;
+}
+
+main > a.active {
+  color: white;
+  cursor: default;
 }

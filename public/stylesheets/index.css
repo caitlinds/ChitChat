@@ -148,6 +148,26 @@ li {
     height: 30px;
 }
 
-button {
-    border-radius: 5%;
+nav > a {
+    margin: 20px;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
 }
+
+main > a {
+    margin: 20px;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+main > a:hover:not(.active) {
+    color: white;
+    background-color: #424748;
+  }
+  
+  main > a.active {
+    color: white;
+    cursor: default;
+  }
