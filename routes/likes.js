@@ -4,12 +4,6 @@ const likesCtrl = require('../controllers/likes');
 // Require the auth middleware
 const ensureLoggedIn = require('../config/ensureLoggedIn');
 
-// All routes "starts with" /tweets
-
-// POST /movies/:id/reviews
-router.post('/add', ensureLoggedIn, likesCtrl.create);
-
-// DELETE /reviews
-// router.delete('/reviews/:id', ensureLoggedIn, reviewsCtrl.delete);
+router.get('/index', ensureLoggedIn, likesCtrl.index);
 
 module.exports = router;

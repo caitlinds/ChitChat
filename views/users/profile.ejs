@@ -3,6 +3,11 @@
     <% if (user) { %>
         <img alt="avatar" class="profile-avatar" src="<%= user.avatar %>" referrerpolicy="no-referrer" >
         <h1 class="white-bg"><%= user.name %></h1>
+        <nav class="white-bg">
+            <a href="/users">Tweets</a>
+            <a href="/likes/index">Likes</a>
+        </nav>
+        <br>
 
         <ul>
             <% user.tweets.forEach(function(t) { %>
@@ -11,7 +16,8 @@
                     <%= t.createdAt.toLocaleDateString() %></li>
                 <li><%= t.content %></li>
                 <form class="white-bg" method="POST" action="/likes/add">
-                    <textarea class="hidden" name="tweetObjId"><%= t %></textarea>
+                    <textarea class="hidden" name="tweetId"><%= t._id %></textarea>
+                    <textarea class="hidden" name="userId"><%= user._id %></textarea>
                     <input type="submit" value="Like">
                 </form>
                 <br>

@@ -1,0 +1,13 @@
+<%- include('../partials/header') %>
+<main>
+    <% if (user) { %>
+        <img alt="avatar" class="profile-avatar" src="<%= user.avatar %>" referrerpolicy="no-referrer" >
+        <h1 class="white-bg"><%= user.name %></h1>
+        <nav class="white-bg">
+            <a href="/users">Tweets</a>
+            <a href="/likes/all">Likes</a>
+        </nav>
+        <h1 class="white-bg">Likes</h1>
+        <% } %>
+</main>
+<%- include('../partials/footer') %> 
