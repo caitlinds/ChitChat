@@ -20,6 +20,7 @@ require('./config/passport');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var homeRouter = require('./routes/home');
+var tweetsRouter = require('./routes/tweets');
 
 var app = express();
 
@@ -59,7 +60,8 @@ app.use(function (req, res, next) {
 
 app.use('/', indexRouter); //log in page
 app.use('/home', homeRouter); //after log in, home page
-app.use('/user', usersRouter); //after log in/user pages
+app.use('/users', usersRouter); //after log in/user pages
+app.use('/tweets', tweetsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

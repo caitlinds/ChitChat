@@ -10,10 +10,13 @@
 <body>
   <nav>
     <% if (user) { %>
+      <a href="/home">
+        <img alt="logo" class="nav-logo" src="/images/twitter-logo.png" referrerpolicy="no-referrer" >
+      </a>
       <a href="/home" <%- title === 'Home' ? 'class="active"' : '' %>>Home</a>
-      <a href="/user">Profile</a>
-      <a href="/user/likes">Likes</a>
-      <a href="/user/bookmarks">Bookmarks</a>
+      <a href="/users">Profile</a>
+      <a href="/users/likes">Likes</a>
+      <a href="/users/bookmarks">Bookmarks</a>
       <a href="/logout">LOG OUT</a>
       <% } %>
   </nav>

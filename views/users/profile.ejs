@@ -1,8 +1,18 @@
 <%- include('../partials/header') %>
 <main>
     <% if (user) { %>
-        <h1><%= title %></h1>
-        <h2><%= user.name %>'s Profile</h2>
+        <img alt="avatar" class="profile-avatar" src="<%= user.avatar %>" referrerpolicy="no-referrer" >
+        <h1 class="white-bg"><%= user.name %></h1>
+
+        <ul>
+            <% user.tweets.forEach(function(t) { %>
+                <li class="hdr"><img alt="avatar" class="avatar" src="<%= t.userAvatar %>" referrerpolicy="no-referrer" >
+                    <%= t.userName %>
+                    <%= t.createdAt.toLocaleDateString() %></li>
+                <li><%= t.content %></li>
+                <br>
+            <% }); %>
+        </ul>
     <% } %>
 </main>
 <%- include('../partials/footer') %>
