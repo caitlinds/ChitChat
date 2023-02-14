@@ -1,3 +1,5 @@
+//home.ejs
+
 <%- include('./partials/header') %>
 <main>
   <h1 class="white-bg"><%= title %></h1>
@@ -11,18 +13,15 @@
       </form>
       <br> 
       <ul>
-        <% users.forEach(function(person) { %>
-          <% person.tweets.forEach(function(t) { %>
-            <li class="hdr"><img alt="avatar" class="avatar" src="<%= person.avatar %>" referrerpolicy="no-referrer" >
-              <%= person.name %>
-                <%= t.createdAt.toLocaleDateString() %></li>
-                <li><%= t.content %></li>
+        <% user.tweets.forEach(function(t) { %>
+            <li class="hdr"><img alt="avatar" class="avatar" src="<%= t.userAvatar %>" referrerpolicy="no-referrer" ><%= t.userName %>
+            <%= t.createdAt.toLocaleDateString() %></li>
+            <li><%= t.content %></li>
             <form class="white-bg" method="POST" action="/likes/add">
               <textarea class="hidden" name="tweetObjId"><%= t %></textarea>
               <input type="submit" value="Like">
             </form>
           <br>
-          <% }) %>
           <% }); %>
       </ul>
     <% } %>

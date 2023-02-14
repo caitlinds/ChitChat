@@ -5,6 +5,7 @@ module.exports = {
 };
 
 function create(req, res) {
+    //User.find({})
     // Add the user-centric info to req.body (the new review)
     req.body.user = req.user._id;
     req.body.userName = req.user.name;
