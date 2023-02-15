@@ -2,7 +2,8 @@ const User = require('../models/user');
 const Tweet = require('../models/tweet');
 
 module.exports = {
-  create
+  create,
+  show
 };
 
 function create(req, res) {
@@ -18,5 +19,14 @@ function create(req, res) {
   tweet.save(function(err) {
     if (err) console.log(err);
     res.redirect('/home');
+  })
+}
+
+function show(req, res) {
+  Tweet.findById(req.params.id, function(err, tweet) {
+    res.render('tweets/show', {
+      title: 'Tweet',
+      tweet
+    })
   })
 }

@@ -1,12 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const tweetsCtrl = require('../controllers/tweets');
+const repliesCtrl = require('../controllers/replies');
 // Require the auth middleware
 const ensureLoggedIn = require('../config/ensureLoggedIn');
 
 
-router.post('/', ensureLoggedIn, tweetsCtrl.create);
-
-router.get('/:id', ensureLoggedIn, tweetsCtrl.show);
+router.post('/tweets/:id/replies', ensureLoggedIn, repliesCtrl.create);
 
 module.exports = router;

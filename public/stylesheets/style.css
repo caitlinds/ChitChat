@@ -264,3 +264,74 @@ main > a.active {
 .hidden {
   display: none;
 }
+
+nav > form {
+  background-color: white;
+  display: inline;
+}
+
+#tweetnav-reply {
+  background-color: white;
+  color: rgb(86 99 112);
+  border: none;
+  font-size: 12px;
+}
+
+#tweetnav-reply:hover {
+  background-color: rgb(230 238 246);
+  color: rgb(74 153 233);
+  border: none;
+  font-size: 12px;
+}
+
+#tweetnav-rt {
+  background-color: white;
+  color: rgb(86 99 112);
+  border: none;
+  border-radius: 10%;
+  padding: 10px;
+  font-size: 12px;
+}
+
+#tweetnav-rt:hover {
+  background-color: rgb(230 241 235);
+  color: rgb(83 183 129);
+  border: none;
+  border-radius: 10%;
+  padding: 10px;
+  font-size: 12px;
+}
+
+#tweetnav-like {
+  background-color: white;
+  color: rgb(86 99 112);
+  border: none;
+  border-radius: 10%;
+  padding: 10px;
+  font-size: 12px;
+}
+
+#tweetnav-like:hover {
+  background-color: rgb(245 228 235);
+  color: rgb(230 68 134);
+  border: none;
+  border-radius: 10%;
+  padding: 10px;
+  font-size: 12px;
+}
+
+a {
+  text-decoration: none;
+}
+
+#tweet-post {
+  margin: 10px;
+}
+
+a > #tweet-post:hover {
+  background-color: rgb(247 247 247);
+}
+
+ul > nav > a {
+  margin-left: 0;
+}

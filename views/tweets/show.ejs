@@ -1,0 +1,31 @@
+<%- include('../partials/header') %>
+<main>
+    <% if (user) { %>
+        <ul>
+            <li class="hdr"><img alt="avatar" class="avatar" src="<%= tweet.userAvatar %>" referrerpolicy="no-referrer">
+                <%= tweet.userName %>
+                <%= tweet.createdAt.toLocaleDateString() %></li>
+            <li><%= tweet.content %></li>
+        </ul>
+        <nav class="white-bg">
+            Replies <%= tweet.replies.length %> ---
+            Likes <%= tweet.likes.length %>
+        </nav>
+        <br>
+        <form class="white-bg" method="POST" action="/tweets/<%= tweet._id %>/replies">
+            <textarea class="white-bg" name="content"></textarea>
+            <br>
+        <ul><li id="test"><input id="tweet-btn" type="submit" value="Reply"></li></ul>
+        </form>
+      <br> 
+      <% tweet.replies.forEach(function(r) { %>
+        <ul>
+            <li class="hdr"><img alt="avatar" class="avatar" src="<%= r.userAvatar %>" referrerpolicy="no-referrer">
+                <%= r.userName %>
+                <%= r.createdAt.toLocaleDateString() %></li>
+            <li><%= r.content %></li>
+        </ul>
+      <% }) %>
+    <% } %>
+</main>
+<%- include('../partials/footer') %> 

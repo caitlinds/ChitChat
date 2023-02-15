@@ -5,6 +5,6 @@ const likesCtrl = require('../controllers/likes');
 const ensureLoggedIn = require('../config/ensureLoggedIn');
 
 
-router.post('/', ensureLoggedIn, likesCtrl.create);
+router.get('/:id', ensureLoggedIn, likesCtrl.add);
 
 module.exports = router;

@@ -22,6 +22,7 @@ var homeRouter = require('./routes/home');
 var usersRouter = require('./routes/users');
 var tweetsRouter = require('./routes/tweets');
 var likesRouter = require('./routes/likes');
+var repliesRouter = require('./routes/replies');
 
 var app = express();
 
@@ -64,6 +65,7 @@ app.use('/home', homeRouter); //after log in, home page
 app.use('/users', usersRouter); //after log in/user pages
 app.use('/tweets', tweetsRouter);
 app.use('/likes', likesRouter);
+app.use('/', repliesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

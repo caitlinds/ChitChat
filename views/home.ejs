@@ -11,18 +11,25 @@
       </form>
       <br> 
       <ul>
-          <% tweets.forEach(function(t) { %>
+        <% tweets.forEach(function(t) { %>
+          <a id="tweet-post" href="/tweets/<%= t._id %>">
             <li class="hdr"><img alt="avatar" class="avatar" src="<%= t.userAvatar %>" referrerpolicy="no-referrer" >
               <%= t.userName %>
                 <%= t.createdAt.toLocaleDateString() %></li>
                 <li><%= t.content %></li>
-            <form class="white-bg" method="POST" action="/likes">
-              <textarea class="hidden" name="tweetObjId"><%= t %></textarea>
-              <input type="submit" value="Like">
-            </form>
-          <br>
+            <nav class="white-bg">
+              <a id="tweetnav-reply" href="/tweets/<%= t._id %>">Reply</a>
+              <%= t.replies.length %>
+              <form class="white-bg" method="POST" action="/retweets">
+                <input id="tweetnav-rt" type="submit" value="Retweet"> 0
+              </form>
+              <a id="tweetnav-like" href="/likes/<%= t._id %>">Like</a>
+                <%= t.likes.length %>
+            </nav>
+            <br>
+          </a>
           <% }); %>
-      </ul>
+        </ul>
     <% } %>
 </main>
 <%- include('./partials/footer') %>
