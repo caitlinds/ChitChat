@@ -11,10 +11,9 @@
       </form>
       <br> 
       <ul>
-        <% users.forEach(function(person) { %>
-          <% person.tweets.forEach(function(t) { %>
-            <li class="hdr"><img alt="avatar" class="avatar" src="<%= person.avatar %>" referrerpolicy="no-referrer" >
-              <%= person.name %>
+          <% tweets.forEach(function(t) { %>
+            <li class="hdr"><img alt="avatar" class="avatar" src="<%= t.userAvatar %>" referrerpolicy="no-referrer" >
+              <%= t.userName %>
                 <%= t.createdAt.toLocaleDateString() %></li>
                 <li><%= t.content %></li>
             <form class="white-bg" method="POST" action="/likes/add">
@@ -22,7 +21,6 @@
               <input type="submit" value="Like">
             </form>
           <br>
-          <% }) %>
           <% }); %>
       </ul>
     <% } %>

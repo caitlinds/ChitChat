@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Tweet = require('../models/tweet');
 
 module.exports = {
   index

@@ -5,12 +5,12 @@
         <h1 class="white-bg"><%= user.name %></h1>
         <nav class="white-bg">
             <a href="/users">Tweets</a>
-            <a href="/likes/index">Likes</a>
+            <a href="/users/likes">Likes</a>
         </nav>
         <br>
 
         <ul>
-            <% user.tweets.forEach(function(t) { %>
+            <% tweets.forEach(function(t) { %>
                 <li class="hdr"><img alt="avatar" class="avatar" src="<%= t.userAvatar %>" referrerpolicy="no-referrer" >
                     <%= t.userName %>
                     <%= t.createdAt.toLocaleDateString() %></li>

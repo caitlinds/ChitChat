@@ -1,9 +1,12 @@
 const User = require('../models/user');
+const Tweet = require('../models/tweet');
 
 module.exports = {
-  index,
+  index
 };
 
 function index(req, res) {
-  res.render('users/profile', {title: 'Profile'})
+  Tweet.find({ user: req.user._id }, function(err, tweets) {
+    res.render('users/profile', {title: 'Profile', tweets})
+  })
 }

@@ -1,12 +1,12 @@
-const User = require('../models/user');
+const Tweet = require('../models/tweet');
 
 module.exports = {
-  show
+  index
 };
 
-function show(req, res) {
-    User.find({}, function(err, users) {
-        console.log(users);
-      res.render('home', { title: 'Home', users});
+function index(req, res) {
+    Tweet.find({}, function(err, tweets) {
+        console.log(tweets);
+      res.render('home', { title: 'Home', tweets});
     });
 }
