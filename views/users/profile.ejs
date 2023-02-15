@@ -15,11 +15,6 @@
                     <%= t.userName %>
                     <%= t.createdAt.toLocaleDateString() %></li>
                 <li><%= t.content %></li>
-                <form class="white-bg" method="POST" action="/likes/add">
-                    <textarea class="hidden" name="tweetId"><%= t._id %></textarea>
-                    <textarea class="hidden" name="userId"><%= user._id %></textarea>
-                    <input type="submit" value="Like">
-                </form>
                 <br>
             <% }); %>
         </ul>

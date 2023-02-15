@@ -5,8 +5,7 @@ module.exports = {
 };
 
 function index(req, res) {
-    Tweet.find({}, function(err, tweets) {
-        console.log(tweets);
+    Tweet.find({}).sort([['createdAt', -1]]).exec(function(err, tweets) {
       res.render('home', { title: 'Home', tweets});
     });
 }
