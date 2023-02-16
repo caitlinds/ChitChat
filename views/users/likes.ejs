@@ -13,8 +13,19 @@
             <% tweets.forEach(function(t) { %>
                 <li class="hdr"><img alt="avatar" class="avatar" src="<%= t.userAvatar %>" referrerpolicy="no-referrer" >
                     <%= t.userName %>
-                      <%= t.createdAt.toLocaleDateString() %></li>
+                    <%= t.createdAt.toLocaleDateString() %></li>
                 <li><%= t.content %></li>
+                <br>
+                <% if (!t.retweets.find(el => el.rt === true)) { %>
+                    <nav id="home-page-nav" class="white-bg">
+                      <a class="tweetnav-reply" href="/tweets/<%= t._id %>">Reply <%= t.replies.length %></a>
+                      <a class="tweetnav-rt" href="/retweets/<%= t._id %>">Retweet</a>
+                      <a class="tweetnav-like" href="/likes/<%= t._id %>">Like <%= t.likes.length %></a>
+                      <a class="white-bg" href="/bookmarks/<%= t._id %>">Bookmark</a>
+                    </nav>
+                <% } %>
+                <br>
+                <br>
             <% }); %>
         </ul>
     <% } %>

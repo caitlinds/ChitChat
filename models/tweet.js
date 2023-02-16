@@ -57,7 +57,18 @@ const tweetSchema = new Schema ({
   userAvatar: String,
   likes: [likesSchema],
   replies: [replySchema],
-  bookmarks: [bookmarksSchema]
+  bookmarks: [bookmarksSchema],
+  retweets: [{
+    rt: {
+      type: Boolean,
+      default: false
+    },
+    rtUser: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+  },
+    rtUserName: String,
+  }],
 }, {
   timestamps: true
 })

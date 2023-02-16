@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const User = require('../models/user');
 const Tweet = require('../models/tweet');
 
@@ -6,30 +7,26 @@ module.exports = {
 };
 
 function add(req, res) {
-    res.redirect('/home');
-}
-
-//from creating replies
-/*
-function create(req, res) {
   Tweet.findById(req.params.id, function(err, tweet) {
-      req.body.user = req.user._id;
-      req.body.userName = req.user.name;
-      req.body.userAvatar = req.user.avatar;
-      console.log(req.body)
-      for (let key in req.body) {
-          if (req.body[key] === '') delete req.body[key];
-      }
-      tweet.replies.push(req.body);
-      // Always save the top-level document (not subdocs)
-      tweet.save(function(err) {
-        res.redirect(`/tweets/${tweet._id}`);
-      });
-    });
+    let retweeted = (tweet.retweets.findIndex(el => el.rtUser.toString() === req.user._id.toString()))
+    if (retweeted >= 0) {
+      tweet.remove(function(err) {
+        res.redirect('/home');
+        })
+  } else {
+      var rtTweet = tweet;
+      rtTweet._id = mongoose.Types.ObjectId();
+      rtTweet.isNew = true;
+      rtTweet.createdAt = Date.now();
+      let rtObj = {}
+      rtObj.rt = true;
+      rtObj.rtUser = req.user._id;
+      rtObj.rtUserName = req.user.name;
+      rtTweet.retweets.push(rtObj);
+      rtTweet.save(function(err) {
+        if (err) console.log(err);
+        res.redirect('/home');
+      })
+    }
+  })
 }
-*/
-
-//add rt to all tweets (with indication of rt)(new Tweet, save)
-//... add text in content or add retweet: boolean to tweets
-//...and be able to display or change style based on T/F
-

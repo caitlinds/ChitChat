@@ -8,9 +8,11 @@
                 <%= tweet.createdAt.toLocaleDateString() %></li>
             <li><%= tweet.content %></li>
         </ul>
-        <nav class="white-bg">
-            Replies <%= tweet.replies.length %> ---
-            Likes <%= tweet.likes.length %>
+        <nav id="home-page-nav" class="white-bg">
+            <a class="tweetnav-reply" href="/tweets/<%= tweet._id %>">Reply <%= tweet.replies.length %></a>
+            <a class="tweetnav-rt" href="/retweets/<%= tweet._id %>">Retweet</a>
+            <a class="tweetnav-like" href="/likes/<%= tweet._id %>">Like <%= tweet.likes.length %></a>
+            <a class="white-bg" href="/bookmarks/<%= tweet._id %>">Bookmark</a>
         </nav>
         <br>
         <form class="white-bg" method="POST" action="/tweets/<%= tweet._id %>/replies">

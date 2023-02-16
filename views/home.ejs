@@ -12,6 +12,11 @@
       <br> 
       <ul>
         <% tweets.forEach(function(t) { %>
+          <% if (t.retweets.find(el => el.rt === true)) { %>
+            <% t.retweets.forEach(function(r) { %>
+            Retweet: <%= r.rtUserName %>
+            <% }) %>
+            <% } %>
           <a id="tweet-post" href="/tweets/<%= t._id %>">
             <strong class="white-bg"><li class="white-bg"><img alt="avatar" class="avatar" src="<%= t.userAvatar %>" referrerpolicy="no-referrer">
               <%= t.userName %>
@@ -27,12 +32,16 @@
                     <br>
                     <br>
                     <br>
+          <% if (!t.retweets.find(el => el.rt === true)) { %>
             <nav id="home-page-nav" class="white-bg">
-              <a class="tweetnav-reply" href="/tweets/<%= t._id %>">Reply <strong class="tweetnav-reply"><%= t.replies.length %></strong></a>
-              <a class="tweetnav-rt" href="/retweets/<%= t._id %>">Retweet <strong class="tweetnav-rt">0</strong></a>
-              <a class="tweetnav-like" href="/likes/<%= t._id %>">Like <strong class="tweetnav-like"><%= t.likes.length %></strong></a>
+              <a class="tweetnav-reply" href="/tweets/<%= t._id %>">Reply <%= t.replies.length %></a>
+              <a class="tweetnav-rt" href="/retweets/<%= t._id %>">Retweet</a>
+              <a class="tweetnav-like" href="/likes/<%= t._id %>">Like <%= t.likes.length %></a>
               <a class="white-bg" href="/bookmarks/<%= t._id %>">Bookmark</a>
             </nav>
+            <% } %>
+            <br>
+            <br>
             <br>
             </a>
           <% }); %>

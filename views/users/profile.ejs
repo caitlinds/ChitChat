@@ -8,7 +8,6 @@
             <a href="/users/likes">Likes</a>
         </nav>
         <br>
-
         <ul>
             <% tweets.forEach(function(t) { %>
                 <li class="hdr"><img alt="avatar" class="avatar" src="<%= t.userAvatar %>" referrerpolicy="no-referrer" >
@@ -16,13 +15,14 @@
                     <%= t.createdAt.toLocaleDateString() %></li>
                 <li><%= t.content %></li>
                 <br>
-                <nav class="white-bg">
-                    <a class="tweetnav-reply" href="/tweets/<%= t._id %>">Reply <strong class="tweetnav-reply"><%= t.replies.length %></strong></a>
-                    <form class="white-bg" method="POST" action="/retweets">
-                      <input class="tweetnav-rt" type="submit" value="Retweet">
-                    </form>
-                    <a class="tweetnav-like" href="/likes/<%= t._id %>">Like <strong class="tweetnav-like"><%= t.likes.length %></strong></a>
-                  </nav>
+                <% if (!t.retweets.find(el => el.rt === true)) { %>
+                    <nav id="home-page-nav" class="white-bg">
+                      <a class="tweetnav-reply" href="/tweets/<%= t._id %>">Reply <%= t.replies.length %></a>
+                      <a class="tweetnav-rt" href="/retweets/<%= t._id %>">Retweet</a>
+                      <a class="tweetnav-like" href="/likes/<%= t._id %>">Like <%= t.likes.length %></a>
+                      <a class="white-bg" href="/bookmarks/<%= t._id %>">Bookmark</a>
+                    </nav>
+                <% } %>
                 <br>
                 <br>
             <% }); %>

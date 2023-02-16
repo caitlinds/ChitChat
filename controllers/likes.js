@@ -21,7 +21,6 @@ function index(req, res) {
 function add(req, res) {
   Tweet.findById(req.params.id, function(err, tweet) {
       let liked = (tweet.likes.findIndex(el => el.user.toString() === req.user._id.toString()))
-      console.log(liked);
       if (liked >= 0) {
         tweet.likes.splice(liked, 1)
         tweet.save(function(err) {
