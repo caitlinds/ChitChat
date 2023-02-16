@@ -8,7 +8,7 @@ module.exports = {
 
 function add(req, res) {
   Tweet.findById(req.params.id, function(err, tweet) {
-    let retweeted = (tweet.retweets.findIndex(el => el.rtUser.toString() === req.user._id.toString()))
+    let retweeted = (tweet.retweets.findIndex(el => el.rtUser.toString() === req.user._id.toString()));
     if (retweeted >= 0) {
       tweet.remove(function(err) {
         res.redirect('/home');

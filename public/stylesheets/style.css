@@ -336,3 +336,18 @@ ul > nav > a {
 #home-page-nav {
   font-size: 10px;
 }
+
+.nav-reply-img {
+  width: 15px;
+  max-height: auto;
+  margin-bottom: 0px;
+  height: auto;
+  background-color: white;
+}
+
+.nav-reply-img:hover {
+  background-color: rgb(230 238 246);
+  color: rgb(74 153 233);
+  border: none;
+  font-size: 12px;
+}

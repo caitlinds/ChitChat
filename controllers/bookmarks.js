@@ -21,11 +21,10 @@ function index(req, res) {
 function add(req, res) {
   Tweet.findById(req.params.id, function(err, tweet) {
       let added = (tweet.bookmarks.findIndex(el => el.user.toString() === req.user._id.toString()))
-      console.log(added);
       if (added >= 0) {
         tweet.bookmarks.splice(added, 1)
         tweet.save(function(err) {
-          res.redirect('/home');
+          res.redirect('back');
           })
     } else {
       req.body.user = req.user._id;
@@ -36,7 +35,7 @@ function add(req, res) {
       }
       tweet.bookmarks.push(req.body);
       tweet.save(function(err) {
-        res.redirect('/home');
+        res.redirect('back');
       })
     }
   })

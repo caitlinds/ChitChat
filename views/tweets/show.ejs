@@ -5,15 +5,35 @@
         <ul>
             <li class="hdr"><img alt="avatar" class="avatar" src="<%= tweet.userAvatar %>" referrerpolicy="no-referrer">
                 <%= tweet.userName %>
-                <%= tweet.createdAt.toLocaleDateString() %></li>
+                <%= tweet.createdAt.toLocaleDateString() %>
+                <% if (user?._id.equals(tweet.user)) { %>
+                    <a class="white-bg" href="/tweets/<%= tweet._id %>/edit">
+                        <img alt="Reply" class="nav-reply-img" src="/images/edit_icon.png" referrerpolicy="no-referrer" >
+                      </a>
+                  <form class="white-bg" action="/tweets/<%= tweet._id %>?_method=DELETE" method="POST">
+                    <input type="image" class="nav-reply-img" alt="Delete" src="/images/delete_icon.png">
+                  </form></li>
+                <% }; %>
             <li><%= tweet.content %></li>
+            <br>
+            <br>
+            <br>
         </ul>
         <nav id="home-page-nav" class="white-bg">
-            <a class="tweetnav-reply" href="/tweets/<%= tweet._id %>">Reply <%= tweet.replies.length %></a>
-            <a class="tweetnav-rt" href="/retweets/<%= tweet._id %>">Retweet</a>
-            <a class="tweetnav-like" href="/likes/<%= tweet._id %>">Like <%= tweet.likes.length %></a>
-            <a class="white-bg" href="/bookmarks/<%= tweet._id %>">Bookmark</a>
-        </nav>
+            <a class="tweetnav-reply" href="/tweets/<%= tweet._id %>">
+              <img alt="Reply" class="nav-reply-img" src="/images/reply_icon.png" referrerpolicy="no-referrer" >
+              <%= tweet.replies.length %>
+            </a>
+            <a class="tweetnav-rt" href="/retweets/<%= tweet._id %>">
+              <img alt="Reply" class="nav-reply-img" src="/images/retweet_icon.png" referrerpolicy="no-referrer" >
+            </a>
+            <a class="tweetnav-like" href="/likes/<%= tweet._id %>">
+              <img alt="Reply" class="nav-reply-img" src="/images/heart_icon.png" referrerpolicy="no-referrer" >
+              <%= tweet.likes.length %></a>
+            <a class="white-bg" href="/bookmarks/<%= tweet._id %>">
+              <img alt="Reply" class="nav-reply-img" src="/images/bookmark_icon.png" referrerpolicy="no-referrer" >
+            </a>
+          </nav>
         <br>
         <form class="white-bg" method="POST" action="/tweets/<%= tweet._id %>/replies">
             <textarea class="white-bg" name="content"></textarea>

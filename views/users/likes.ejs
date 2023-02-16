@@ -1,7 +1,6 @@
 <%- include('../partials/header') %>
 <main>
     <% if (user) { %>
-        
         <img alt="avatar" class="profile-avatar" src="<%= user.avatar %>" referrerpolicy="no-referrer" >
         <h1 class="white-bg"><%= user.name %></h1>
         <nav class="white-bg">
@@ -11,21 +10,40 @@
         <h1 class="white-bg">Likes</h1>
         <ul>
             <% tweets.forEach(function(t) { %>
+              <% if (!t.retweets.length) { %>
                 <li class="hdr"><img alt="avatar" class="avatar" src="<%= t.userAvatar %>" referrerpolicy="no-referrer" >
                     <%= t.userName %>
-                    <%= t.createdAt.toLocaleDateString() %></li>
+                    <%= t.createdAt.toLocaleDateString() %>
+                    <% if (user?._id.equals(t.user)) { %>
+                        <a class="white-bg" href="/tweets/<%= t._id %>/edit">
+                            <img alt="Reply" class="nav-reply-img" src="/images/edit_icon.png" referrerpolicy="no-referrer" >
+                          </a>
+                      <form class="white-bg" action="/tweets/<%= t._id %>?_method=DELETE" method="POST">
+                        <input type="image" class="nav-reply-img" alt="Delete" src="/images/delete_icon.png">
+                      </form></li>
+                    <% }; %>
                 <li><%= t.content %></li>
-                <br>
-                <% if (!t.retweets.find(el => el.rt === true)) { %>
-                    <nav id="home-page-nav" class="white-bg">
-                      <a class="tweetnav-reply" href="/tweets/<%= t._id %>">Reply <%= t.replies.length %></a>
-                      <a class="tweetnav-rt" href="/retweets/<%= t._id %>">Retweet</a>
-                      <a class="tweetnav-like" href="/likes/<%= t._id %>">Like <%= t.likes.length %></a>
-                      <a class="white-bg" href="/bookmarks/<%= t._id %>">Bookmark</a>
-                    </nav>
                 <% } %>
                 <br>
                 <br>
+                <br>
+                <% if (!t.retweets.find(el => el.rt === true)) { %>
+                    <nav id="home-page-nav" class="white-bg">
+                        <a class="tweetnav-reply" href="/tweets/<%= t._id %>">
+                          <img alt="Reply" class="nav-reply-img" src="/images/reply_icon.png" referrerpolicy="no-referrer" >
+                          <%= t.replies.length %>
+                        </a>
+                        <a class="tweetnav-rt" href="/retweets/<%= t._id %>">
+                          <img alt="Reply" class="nav-reply-img" src="/images/retweet_icon.png" referrerpolicy="no-referrer" >
+                        </a>
+                        <a class="tweetnav-like" href="/likes/<%= t._id %>">
+                          <img alt="Reply" class="nav-reply-img" src="/images/heart_icon.png" referrerpolicy="no-referrer" >
+                          <%= t.likes.length %></a>
+                        <a class="white-bg" href="/bookmarks/<%= t._id %>">
+                          <img alt="Reply" class="nav-reply-img" src="/images/bookmark_icon.png" referrerpolicy="no-referrer" >
+                        </a>
+                      </nav>
+                <% } %>
             <% }); %>
         </ul>
     <% } %>
