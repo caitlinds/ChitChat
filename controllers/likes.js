@@ -10,19 +10,13 @@ function index(req, res) {
   Tweet.find({
     "likes": {
       $elemMatch: {
-        user: `${req.params.id}`
+        user: `${req.user._id}`
       }
     }
   }, function(err, tweets) {
-    res.render('users/likes', tweets)
+    res.render('users/likes', {title: "User Likes", tweets})
   })
 }
-
-// function index(req, res) {
-//   Tweet.find({}, function(err, tweets) {
-//       res.render('users/likes', {title: 'User Likes', tweets})
-//     })
-//   }
 
 function add(req, res) {
   Tweet.findById(req.params.id, function(err, tweet) {
@@ -32,11 +26,12 @@ function add(req, res) {
     for (let key in req.body) {
       if (req.body[key] === '') delete req.body[key];
     }
+    // if (tweet.likes.user.equals(req.user._id)) {
+    //   res.redirect('/home'); 
+    // } else
     tweet.likes.push(req.body);
     tweet.save(function(err) {
-      console.log(tweet.likes.length);
-      if (req.referer === 'http://localhost:3000/home') res.redirect('/home', tweet);
-      if (req.referer === 'http://localhost:3000/users') res.redirect('/users');
+      res.redirect('back');
     })
   })
 }

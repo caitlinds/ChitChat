@@ -1,0 +1,9 @@
+<%- include('../partials/header') %>
+<main>
+    <form class="white-bg" action="/tweets/<%= tweet.id %>?_method=PUT" method="POST" autocomplete="off">
+        <textarea class="white-bg" name="content"><%= tweet.content %></textarea>
+        <br>
+        <button type="submit">Update Tweet</button>
+    </form>
+</main>
+<%- include('../partials/footer') %>

@@ -13,21 +13,25 @@
       <ul>
         <% tweets.forEach(function(t) { %>
           <a id="tweet-post" href="/tweets/<%= t._id %>">
-            <li class="hdr"><img alt="avatar" class="avatar" src="<%= t.userAvatar %>" referrerpolicy="no-referrer" >
+            <strong class="white-bg"><li class="white-bg"><img alt="avatar" class="avatar" src="<%= t.userAvatar %>" referrerpolicy="no-referrer">
               <%= t.userName %>
-                <%= t.createdAt.toLocaleDateString() %></li>
-                <li><%= t.content %></li>
+                <%= t.createdAt.toLocaleDateString() %></a>
+                <% if (user?._id.equals(t.user)) { %>
+                  <a class="white-bg" href="/tweets/<%= t._id %>/edit">Edit</a>
+              <form class="white-bg" action="/tweets/<%= t._id %>?_method=DELETE" method="POST">
+                <input type="submit" value="Delete">
+              </form></strong></li>
+              <% }; %>
+                    <li><%= t.content %></li>
             <nav class="white-bg">
-              <a id="tweetnav-reply" href="/tweets/<%= t._id %>">Reply</a>
-              <%= t.replies.length %>
+              <a class="tweetnav-reply" href="/tweets/<%= t._id %>">Reply <strong class="tweetnav-reply"><%= t.replies.length %></strong></a>
               <form class="white-bg" method="POST" action="/retweets">
-                <input id="tweetnav-rt" type="submit" value="Retweet"> 0
+                <input class="tweetnav-rt" type="submit" value="Retweet">
               </form>
-              <a id="tweetnav-like" href="/likes/<%= t._id %>">Like</a>
-                <%= t.likes.length %>
+              <a class="tweetnav-like" href="/likes/<%= t._id %>">Like <strong class="tweetnav-like"><%= t.likes.length %></strong></a>
             </nav>
             <br>
-          </a>
+            </a>
           <% }); %>
         </ul>
     <% } %>

@@ -1,6 +1,7 @@
 <%- include('../partials/header') %>
 <main>
     <% if (user) { %>
+        <h1 class="white-bg"><%= title %></h1>
         <ul>
             <li class="hdr"><img alt="avatar" class="avatar" src="<%= tweet.userAvatar %>" referrerpolicy="no-referrer">
                 <%= tweet.userName %>

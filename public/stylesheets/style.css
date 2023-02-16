@@ -171,10 +171,6 @@ ul {
 li {
   background-color: white;
 }
-	
-.hdr {
-  font-weight: bold;
-}
 
 .login {
   display: flex;
@@ -270,21 +266,21 @@ nav > form {
   display: inline;
 }
 
-#tweetnav-reply {
+.tweetnav-reply {
   background-color: white;
   color: rgb(86 99 112);
   border: none;
   font-size: 12px;
 }
 
-#tweetnav-reply:hover {
+.tweetnav-reply:hover {
   background-color: rgb(230 238 246);
   color: rgb(74 153 233);
   border: none;
   font-size: 12px;
 }
 
-#tweetnav-rt {
+.tweetnav-rt {
   background-color: white;
   color: rgb(86 99 112);
   border: none;
@@ -293,7 +289,7 @@ nav > form {
   font-size: 12px;
 }
 
-#tweetnav-rt:hover {
+.tweetnav-rt:hover {
   background-color: rgb(230 241 235);
   color: rgb(83 183 129);
   border: none;
@@ -302,7 +298,7 @@ nav > form {
   font-size: 12px;
 }
 
-#tweetnav-like {
+.tweetnav-like {
   background-color: white;
   color: rgb(86 99 112);
   border: none;
@@ -311,7 +307,7 @@ nav > form {
   font-size: 12px;
 }
 
-#tweetnav-like:hover {
+.tweetnav-like:hover {
   background-color: rgb(245 228 235);
   color: rgb(230 68 134);
   border: none;
@@ -326,6 +322,7 @@ a {
 
 #tweet-post {
   margin: 10px;
+  background-color: white;
 }
 
 a > #tweet-post:hover {

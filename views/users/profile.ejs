@@ -16,6 +16,15 @@
                     <%= t.createdAt.toLocaleDateString() %></li>
                 <li><%= t.content %></li>
                 <br>
+                <nav class="white-bg">
+                    <a class="tweetnav-reply" href="/tweets/<%= t._id %>">Reply <strong class="tweetnav-reply"><%= t.replies.length %></strong></a>
+                    <form class="white-bg" method="POST" action="/retweets">
+                      <input class="tweetnav-rt" type="submit" value="Retweet">
+                    </form>
+                    <a class="tweetnav-like" href="/likes/<%= t._id %>">Like <strong class="tweetnav-like"><%= t.likes.length %></strong></a>
+                  </nav>
+                <br>
+                <br>
             <% }); %>
         </ul>
     <% } %>

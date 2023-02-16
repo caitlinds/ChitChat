@@ -3,7 +3,10 @@ const Tweet = require('../models/tweet');
 
 module.exports = {
   create,
-  show
+  show,
+  edit,
+  update,
+  delete: deleteTweet
 };
 
 function create(req, res) {
@@ -25,8 +28,51 @@ function create(req, res) {
 function show(req, res) {
   Tweet.findById(req.params.id, function(err, tweet) {
     res.render('tweets/show', {
-      title: 'Tweet',
+      title: 'Thread',
       tweet
     })
   })
+}
+
+function edit(req, res) {
+  Tweet.findOne({
+    '_id': req.params.id,
+    'user': req.user._id},
+    function(err, tweet) {
+      if (!tweet) return res.redirect('/home');
+      res.render('tweets/edit', {
+        title: 'Edit Tweet',
+        tweet
+  })
+});
+}
+
+function update(req, res) {
+  Tweet.findOne({
+    '_id': req.params.id,
+    'user': req.user._id},
+    function(err, tweet) {
+    if (!tweet) return res.redirect(`/home`);
+    tweet.content = req.body.content
+    tweet.save(function(err) {
+      res.redirect('/home');
+    })
+  });
+}
+
+function deleteTweet(req, res, next) {
+    Tweet.findOne({
+      '_id': req.params.id,
+      'user': req.user._id},
+      function(err, tweet) {
+        // Rogue user!
+        if (!tweet) return res.redirect('/home');
+        // Remove the review using the remove method available on Mongoose arrays
+        tweet.remove(req.params.id);
+        // Save the updated movie
+        tweet.save(function(err) {
+          // Redirect back to the movie's show view
+          res.redirect('/home');
+        })
+  });
 }
