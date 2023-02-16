@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const repliesCtrl = require('../controllers/replies');
+const retweetsCtrl = require('../controllers/retweets');
 // Require the auth middleware
 const ensureLoggedIn = require('../config/ensureLoggedIn');
 
-//create new reply
-router.post('/tweets/:id/replies', ensureLoggedIn, repliesCtrl.create);
+//add and remove retweet
+router.get('/:id', ensureLoggedIn, retweetsCtrl.add);
 
 module.exports = router;

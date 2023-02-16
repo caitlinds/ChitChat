@@ -2,9 +2,42 @@ const User = require('../models/user');
 const Tweet = require('../models/tweet');
 
 module.exports = {
-  index
+  index,
+  add
 };
 
 function index(req, res) {
-  res.render('users/bookmarks', {title: 'Bookmarks'})
+  Tweet.find({
+    "bookmarks": {
+      $elemMatch: {
+        user: req.user._id
+      }
+    }
+  }, function(err, tweets) {
+    res.render('users/bookmarks', {title: "Bookmarks", tweets})
+  })
+}
+
+function add(req, res) {
+  Tweet.findById(req.params.id, function(err, tweet) {
+      let added = (tweet.bookmarks.findIndex(el => el.user.toString() === req.user._id.toString()))
+      console.log(added);
+      if (added >= 0) {
+        tweet.bookmarks.splice(added, 1)
+        tweet.save(function(err) {
+          res.redirect('/home');
+          })
+    } else {
+      req.body.user = req.user._id;
+      req.body.userName = req.user.name;
+      req.body.userAvatar = req.user.avatar;
+      for (let key in req.body) {
+        if (req.body[key] === '') delete req.body[key];
+      }
+      tweet.bookmarks.push(req.body);
+      tweet.save(function(err) {
+        res.redirect('/home');
+      })
+    }
+  })
 }

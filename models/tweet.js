@@ -1,6 +1,18 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const bookmarksSchema = new Schema ({
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  userName: String,
+  userAvatar: String
+}, {
+  timestamps: true
+})
+
 const likesSchema = new Schema ({
   user: {
     type: Schema.Types.ObjectId,
@@ -25,7 +37,8 @@ const replySchema = new Schema ({
   },
   userName: String,
   userAvatar: String,
-  likes: [likesSchema]
+  likes: [likesSchema],
+  bookmarks: [bookmarksSchema]
 }, {
   timestamps: true
 })
@@ -43,7 +56,8 @@ const tweetSchema = new Schema ({
   userName: String,
   userAvatar: String,
   likes: [likesSchema],
-  replies: [replySchema]
+  replies: [replySchema],
+  bookmarks: [bookmarksSchema]
 }, {
   timestamps: true
 })

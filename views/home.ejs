@@ -22,13 +22,16 @@
                 <input type="submit" value="Delete">
               </form></strong></li>
               <% }; %>
+              <br>
                     <li><%= t.content %></li>
-            <nav class="white-bg">
+                    <br>
+                    <br>
+                    <br>
+            <nav id="home-page-nav" class="white-bg">
               <a class="tweetnav-reply" href="/tweets/<%= t._id %>">Reply <strong class="tweetnav-reply"><%= t.replies.length %></strong></a>
-              <form class="white-bg" method="POST" action="/retweets">
-                <input class="tweetnav-rt" type="submit" value="Retweet">
-              </form>
+              <a class="tweetnav-rt" href="/retweets/<%= t._id %>">Retweet <strong class="tweetnav-rt">0</strong></a>
               <a class="tweetnav-like" href="/likes/<%= t._id %>">Like <strong class="tweetnav-like"><%= t.likes.length %></strong></a>
+              <a class="white-bg" href="/bookmarks/<%= t._id %>">Bookmark</a>
             </nav>
             <br>
             </a>

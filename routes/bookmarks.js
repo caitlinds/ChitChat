@@ -1,10 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const likesCtrl = require('../controllers/likes');
+const bookmarksCtrl = require('../controllers/bookmarks');
 // Require the auth middleware
 const ensureLoggedIn = require('../config/ensureLoggedIn');
 
+//see index page
+router.get('/', ensureLoggedIn, bookmarksCtrl.index);
+
 //add and remove like
-router.get('/:id', ensureLoggedIn, likesCtrl.add);
+router.get('/:id', ensureLoggedIn, bookmarksCtrl.add);
 
 module.exports = router;

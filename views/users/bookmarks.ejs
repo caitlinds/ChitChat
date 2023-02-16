@@ -4,6 +4,14 @@
         <img alt="avatar" class="profile-avatar" src="<%= user.avatar %>" referrerpolicy="no-referrer" >
         <h1 class="white-bg"><%= user.name %></h1>
         <h1 class="white-bg">Bookmarks</h1>
+        <ul>
+            <% tweets.forEach(function(t) { %>
+                <li class="hdr"><img alt="avatar" class="avatar" src="<%= t.userAvatar %>" referrerpolicy="no-referrer" >
+                    <%= t.userName %>
+                      <%= t.createdAt.toLocaleDateString() %></li>
+                <li><%= t.content %></li>
+            <% }); %>
+        </ul>
     <% } %>
 </main>
 <%- include('../partials/footer') %>

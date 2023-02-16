@@ -332,3 +332,7 @@ a > #tweet-post:hover {
 ul > nav > a {
   margin-left: 0;
 }
+
+#home-page-nav {
+  font-size: 10px;
+}
