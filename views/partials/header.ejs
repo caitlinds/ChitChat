@@ -11,12 +11,20 @@
 <body>
   <nav>
     <% if (user) { %>
-      <a href="/home">
+      <a class="white-bg" href="/home">
         <img alt="logo" class="nav-logo" src="/images/twitter-logo.png" referrerpolicy="no-referrer" >
       </a>
-      <a href="/home" <%- title === 'Home' ? 'class="active"' : '' %>>Home</a>
-      <a href="/users">Profile</a>
-      <a href="/bookmarks">Bookmarks</a>
-      <a href="/logout">LOG OUT</a>
+      <a class="white-bg" href="/home">
+        <img alt="logo" class="nav-logo" src="/images/home_icon.png" referrerpolicy="no-referrer" >
+      </a>
+      <a class="white-bg" href="/users">
+      <img alt="logo" class="nav-logo" src="/images/profile_icon.png" referrerpolicy="no-referrer" >
+    </a>
+    <a class="white-bg" href="/bookmarks">
+      <img alt="logo" class="nav-logo" src="/images/bookmark_icon.png" referrerpolicy="no-referrer" >
+    </a>
+    <a class="white-bg" href="/logout">
+      <img alt="logo" class="nav-logo" src="/images/logout_icon.png" referrerpolicy="no-referrer" >
+    </a>
       <% } %>
   </nav>

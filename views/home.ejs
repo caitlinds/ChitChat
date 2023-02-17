@@ -1,66 +1,78 @@
 <%- include('./partials/header') %>
 <main>
-  <h1 class="white-bg"><%= title %></h1>
+  <h1 class="page-title white-bg"><%= title %></h1>
 
-    <% if (user) { %> 
-      <form class="white-bg" method="POST"
-        action="/tweets">
-        <img alt="avatar" class="avatar" src="<%= user.avatar %>" referrerpolicy="no-referrer">
-        <textarea class="white-bg" name="content"></textarea>
-        <br>
-        <ul><li id="test"><input id="tweet-btn" type="submit" value="Tweet"></li></ul>
+  <% if (user) { %> 
+    <div class="white-bg flex-ctr">
+      <img id="home-page-avatar" alt="avatar" src="<%= user.avatar %>" referrerpolicy="no-referrer">
+      <form class="white-bg" method="POST" action="/tweets">
+          <textarea id="tweet-text" class="white-bg" name="content"></textarea>
+    </div>
+        <div class="white-bg flex-ctr">
+          <input id="tweet-btn" type="submit" value="Tweet">
+        </div>
       </form>
-      <br> 
+
+    <section class="white-bg flex-ctr">
       <ul>
         <% tweets.forEach(function(t) { %>
           <% if (t.retweets.find(el => el.rt === true)) { %>
             <% t.retweets.forEach(function(r) { %>
-             <li id="rt-home-text">
-                <a class="tweetnav-rt" href="/retweets/<%= t._id %>">
-                  <img alt="Reply" class="nav-reply-img" src="/images/retweet_icon.png" referrerpolicy="no-referrer" >
+              <li>
+                <a class="white-bg inline-ctr" href="/retweets/<%= t._id %>">
+                  <img alt="Retweet" class="nav-rt-img" src="/images/retweet_icon.png" referrerpolicy="no-referrer">
                 </a>
-                <%= r.rtUserName %> Retweeted</li>
+                <div id="rt-text" class="inline-ctr"><%= r.rtUserName %> Retweeted</div>
+              </li>
             <% }) %>
-            <% } %>
-          <a id="tweet-post" href="/tweets/<%= t._id %>">
-            <li class="white-bg"><img alt="avatar" class="avatar" src="<%= t.userAvatar %>" referrerpolicy="no-referrer">
-              <%= t.userName %>
-                <%= t.createdAt.toLocaleDateString() %></a>
-                <% if (user?._id.equals(t.user)) { %>
-                  <a class="white-bg" href="/tweets/<%= t._id %>/edit">
-                    <img alt="Reply" class="nav-reply-img" src="/images/edit_icon.png" referrerpolicy="no-referrer" >
-                  </a>
-              <form class="white-bg" action="/tweets/<%= t._id %>?_method=DELETE" method="POST">
-                <input type="image" class="nav-reply-img" alt="Delete" src="/images/delete_icon.png">
-              </form></li>
-              <% }; %>
-                    <li><%= t.content %></li>
-                    <br>
-                    <br>
-                    <br>
-          <% if (!t.retweets.find(el => el.rt === true)) { %>
-            <nav id="home-page-nav" class="white-bg">
-              <a class="tweetnav-reply" href="/tweets/<%= t._id %>">
-                <img alt="Reply" class="nav-reply-img" src="/images/reply_icon.png" referrerpolicy="no-referrer" >
-                <%= t.replies.length %>
+          <% } %>
+
+    <section class="white-bg tweet-text-border">
+      <li>
+        <a class="white-bg" href="/tweets/<%= t._id %>">
+        <img alt="avatar" class="avatar white-bg inline-ctr" src="<%= t.userAvatar %>" referrerpolicy="no-referrer">
+        <div class="inline-ctr">
+          <%= t.userName %>
+          <%= t.createdAt.toLocaleDateString() %>
+        </a>
+          <% if (user?._id.equals(t.user)) { %>
+              <a class="white-bg inline-ctr" href="/tweets/<%= t._id %>/edit">
+                <img alt="Edit" class="nav-reply-img" src="/images/edit_icon.png" referrerpolicy="no-referrer" >
               </a>
-              <a class="tweetnav-rt" href="/retweets/<%= t._id %>">
-                <img alt="Reply" class="nav-reply-img" src="/images/retweet_icon.png" referrerpolicy="no-referrer" >
+              <form class="white-bg inline-ctr" action="/tweets/<%= t._id %>?_method=DELETE" method="POST">
+                <input type="image" class="nav-del-img" alt="Delete" src="/images/delete_icon.png">
+              </form>
+          <% }; %>
+      </li>
+      <li class="white-bg post-text">
+        <%= t.content %>
+      </li>
+    </section>
+
+        <% if (!t.retweets.find(el => el.rt === true)) { %>
+          <nav>
+            <li class="nav-space">
+                <a class="white-bg inline-ctr" href="/tweets/<%= t._id %>">
+                  <img alt="Reply" class="nav-reply-img" src="/images/reply_icon.png" referrerpolicy="no-referrer" >
+                  <%= t.replies.length %>
+                </a>
+              <a class="white-bg inline-ctr" href="/retweets/<%= t._id %>">
+                <img alt="Reply" class="nav-rt-img" src="/images/retweet_icon.png" referrerpolicy="no-referrer" >
               </a>
-              <a class="tweetnav-like" href="/likes/<%= t._id %>">
-                <img alt="Reply" class="nav-reply-img" src="/images/heart_icon.png" referrerpolicy="no-referrer" >
-                <%= t.likes.length %></a>
-              <a class="white-bg" href="/bookmarks/<%= t._id %>">
-                <img alt="Reply" class="nav-reply-img" src="/images/bookmark_icon.png" referrerpolicy="no-referrer" >
+              <a class="white-bg inline-ctr" href="/likes/<%= t._id %>">
+                <img alt="Reply" class="nav-like-img" src="/images/heart_icon.png" referrerpolicy="no-referrer" >
+                <%= t.likes.length %>
               </a>
-            </nav>
-            <% } %>
+              <a class="white-bg inline-ctr" href="/bookmarks/<%= t._id %>">
+                <img alt="Reply" class="nav-bm-img" src="/images/bookmark_icon.png" referrerpolicy="no-referrer" >
+              </a>
+            </li>
+          </nav>
+        <% } %>
             <br>
             <br>
-            <br>
-            </a>
-          <% }); %>
+        <% }); %>
         </ul>
-    <% } %>
+  <% } %>
 </main>
 <%- include('./partials/footer') %>
