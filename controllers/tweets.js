@@ -70,7 +70,7 @@ function deleteTweet(req, res, next) {
         // Save the updated movie
         tweet.save(function(err) {
           // Redirect back to the movie's show view
-          res.redirect('/home');
+          res.redirect('back');
         })
   });
 }
