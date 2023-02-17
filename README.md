@@ -1,10 +1,11 @@
 # Twitter Clone App
 
 ## Description
-The Space Jam word game is a themed take on the classic game of hangman, in which a player is given an unknown word and has to correctly guess the word by choosing letters. If the letter is contained in the unknown word, then the letter is revealed and the player continues. If the letter is not in the word, the player "loses a life," which is represented by one part of a picture being drawn. If the picture is complete (the player has used all available guesses), then the player has lost the game.
+The Twitter Clone App mimics the functionality of the popular Twitter website. Twitter is a social networking site that allows people to post their thoughts with a large audience. 
 
-In this version of the game, a player is given a secret word displayed on the screen. The player has 6 guesses to reveal the secret word before the Monstar appears. The player is able to choose the category of the secret word by clicking the "categories" button. The player has 3 hints that can be used, which will display a letter in the secret word that has not already been correctly guessed. If the word is guessed correctly, the player wins. The game can be reset at any time by pressing the "reset" button.
+In this app, users can share messages (tweets) with friends by posting a tweet from the home page. The tweet is then displayed on the home page for all users to see. Each posted tweet has a navagation bar below the tweet content, which can be used to reply to, retweet, like, or bookmark the message. The amount of replies and likes for a specific tweet are recorded in the nav bar next to their respective icons. Replying to a message will take users to a thread page, which will display all the replies for that tweet. When a user retweets a message, that message is redisplayed at the top of the home screen, with an indicator showing which user rewteeted the message.
 
+The navigation bar on the left side of the app can be used to navigate to the user's profile page, which will show all of the user's tweets and likes. The bookmark page can also be visited from the nav bar, which will show all tweets saved as a bookmark.
 
 ## Screenshots
 ![Twitter Clone Log In](https://i.imgur.com/vBtWBty.png)
