@@ -7,13 +7,13 @@ In this version of the game, a player is given a secret word displayed on the sc
 
 
 ## Screenshots
-![Twitter Clone Log In](https://imgur.com/7ZAYjkr)
+![Twitter Clone Log In](https://i.imgur.com/vBtWBty.png)
 
-![Twitter Clone Home Page](https://imgur.com/0JbhENq)
+![Twitter Clone Home Page](https://i.imgur.com/gKPUpSO.png)
 
-![Twitter Clone Profile Page](https://imgur.com/OAWRUmB)
+![Twitter Clone Profile Page](https://i.imgur.com/YyJ88RA.png)
 
-![Twitter Clone Tweet Thread](https://imgur.com/Ym1LgxY)
+![Twitter Clone Tweet Thread](https://i.imgur.com/WdkNCxv.png)
 
 ## Technologies Used
 - HTML
