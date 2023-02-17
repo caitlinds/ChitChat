@@ -24,14 +24,15 @@ In this version of the game, a player is given a secret word displayed on the sc
 - Heroku
 - Express
 
-## How to Use
-- Access game here: https://caitlinds.github.io/spaceman/
-- Begin the game by selecting a letter, or choosing a category
-- If needed, use hints to help reveal the secret word
-- Guess the word before the Monstar appears!
+## Instructions
+- Access app here: https://twitter-clone-109.herokuapp.com/
+- Share messages with friends by posting a tweet
+- Like, bookmark, or retweet interesting tweets
+- View bookmarked tweets in your bookmarks page
+- See all the tweets you've posted and liked on your profile page
 
 ## Icebox Features
 Future improvements:
-- Displaying the current category
-- Displaying a score board to track player wins and loses
-- Allowing spaced words to appear spaced when unrevealed
+- Make mobile responsive
+- Show liked and bookmarked posts using icons
+- Improve CSS 
