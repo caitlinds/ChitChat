@@ -42,7 +42,7 @@
     </a>
       <% if (user?._id.equals(t.user)) { %>
         <a class="white-bg inline-ctr" href="/tweets/<%= t._id %>/edit">
-          <img alt="Edit" class="nav-reply-img" src="/images/edit_icon.png" referrerpolicy="no-referrer" >
+          <img alt="Edit" class="nav-del-img" src="/images/edit_icon.png" referrerpolicy="no-referrer" >
         </a>
         <form class="white-bg inline-ctr" action="/tweets/<%= t._id %>?_method=DELETE" method="POST">
           <input type="image" class="nav-del-img" alt="Delete" src="/images/delete_icon.png">

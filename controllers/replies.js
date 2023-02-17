@@ -21,7 +21,3 @@ function create(req, res) {
     });
 }
 
-//add rt to all tweets (with indication of rt)
-//... add text in content or add retweet: boolean to tweets
-//...and be able to display or change style based on T/F
-
