@@ -3,22 +3,27 @@
     <% if (user) { %>
       <h1 class="page-title white-bg">Tweet</h1>
         <ul>
-          <li class="hdr"><img alt="avatar" class="avatar" src="<%= tweet.userAvatar %>" referrerpolicy="no-referrer">
-                <%= tweet.userName %>
-                <%= tweet.createdAt.toLocaleDateString() %>
+          <section class="white-bg tweet-text-border">
+            <li>
+              <a class="white-bg" href="/tweets/<%= tweet._id %>">
+                <img alt="avatar" class="avatar white-bg inline-ctr" src="<%= tweet.userAvatar %>" referrerpolicy="no-referrer">
+                  <%= tweet.userName %>
+                  <%= tweet.createdAt.toLocaleDateString() %>
+              </a>
                 <% if (user?._id.equals(tweet.user)) { %>
-                    <a class="white-bg" href="/tweets/<%= tweet._id %>/edit">
-                        <img alt="Reply" class="nav-reply-img" src="/images/edit_icon.png" referrerpolicy="no-referrer" >
-                      </a>
-                  <form class="white-bg" action="/tweets/<%= tweet._id %>?_method=DELETE" method="POST">
-                    <input type="image" class="nav-del-img" alt="Delete" src="/images/delete_icon.png">
-                  </form></li>
+                    <a class="white-bg inline-ctr" href="/tweets/<%= t._id %>/edit">
+                      <img alt="Edit" class="nav-del-img" src="/images/edit_icon.png" referrerpolicy="no-referrer" >
+                    </a>
+                    <form class="white-bg inline-ctr" action="/tweets/<%= t._id %>?_method=DELETE" method="POST">
+                      <input type="image" class="nav-del-img" alt="Delete" src="/images/delete_icon.png">
+                    </form>
                 <% }; %>
-            <li><%= tweet.content %></li>
-            <br>
-            <br>
-            <br>
-        </ul>
+            </li>
+            <li class="white-bg post-text">
+              <%= tweet.content %>
+            </li>
+          </section>
+
         <nav>
           <li class="nav-space">
             <a class="white-bg inline-ctr" href="/tweets/<%= tweet._id %>">
@@ -34,17 +39,20 @@
             </a>
             <a class="white-bg inline-ctr" href="/bookmarks/<%= tweet._id %>">
               <img alt="Bookmark" class="nav-bm-img" src="/images/bookmark_icon.png" referrerpolicy="no-referrer" >
-            </a>
+            </a> 
           </li>
         </nav>
+      </section>
+      </ul>
         <br>
-
-        
+        <br>
+      
+        <div class="white-bg flex-ctr"></div>
         <form class="white-bg" method="POST" action="/tweets/<%= tweet._id %>/replies">
-            <textarea class="white-bg" name="content"></textarea>
-            <br>
-        <ul><li id="test"><input id="tweet-btn" type="submit" value="Reply"></li></ul>
+            <textarea id="reply-text" class="white-bg" name="content"></textarea>
+            <input id="tweet-btn" type="submit" value="Reply">
         </form>
+      </div>
       <br> 
       <% tweet.replies.forEach(function(r) { %>
         <ul>

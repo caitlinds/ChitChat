@@ -190,17 +190,17 @@ a {
 .nav-del-img {
   width: 18px;
   max-height: auto;
-  margin-bottom: 0px;
   height: auto;
   background-color: white;
+  margin-left: 5px;
 }
 
 .nav-del-img:hover {
   width: 18px;
   max-height: auto;
-  margin-bottom: 0px;
   height: auto;
   background-color: white;
+  margin-left: 5px;
 }
 
 #submit-tweet {
