@@ -175,5 +175,16 @@ main > a.active {
 
 #happening {
     font-size: 46px;
-    color: rgb(74, 153, 232);
+    color: rgb(86 161 207);
+}
+
+.login {
+    text-decoration: none;
+    border: 2px solid rgb(221 222 226);
+    border-radius: 20px;
+}
+
+.login:hover {
+    text-decoration: none;
+    background-color: rgb(230 230 230);
 }

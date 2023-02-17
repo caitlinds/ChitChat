@@ -2,66 +2,81 @@
 <main>
     <% if (user) { %>
       <h1 class="page-title white-bg">Tweet</h1>
-        <ul>
-          <section class="white-bg tweet-text-border">
-            <li>
-              <a class="white-bg" href="/tweets/<%= tweet._id %>">
-                <img alt="avatar" class="avatar white-bg inline-ctr" src="<%= tweet.userAvatar %>" referrerpolicy="no-referrer">
-                  <%= tweet.userName %>
-                  <%= tweet.createdAt.toLocaleDateString() %>
-              </a>
-                <% if (user?._id.equals(tweet.user)) { %>
-                    <a class="white-bg inline-ctr" href="/tweets/<%= t._id %>/edit">
-                      <img alt="Edit" class="nav-del-img" src="/images/edit_icon.png" referrerpolicy="no-referrer" >
-                    </a>
-                    <form class="white-bg inline-ctr" action="/tweets/<%= t._id %>?_method=DELETE" method="POST">
-                      <input type="image" class="nav-del-img" alt="Delete" src="/images/delete_icon.png">
-                    </form>
-                <% }; %>
-            </li>
-            <li class="white-bg post-text">
-              <%= tweet.content %>
-            </li>
-          </section>
 
-        <nav>
-          <li class="nav-space">
-            <a class="white-bg inline-ctr" href="/tweets/<%= tweet._id %>">
-              <img alt="Reply" class="nav-reply-img" src="/images/reply_icon.png" referrerpolicy="no-referrer" >
-              <%= tweet.replies.length %>
-            </a>
-            <a class="white-bg inline-ctr" href="/retweets/<%= tweet._id %>">
-              <img alt="Retweet" class="nav-rt-img" src="/images/retweet_icon.png" referrerpolicy="no-referrer" >
-            </a>
-            <a class="white-bg inline-ctr" href="/likes/<%= tweet._id %>">
-              <img alt="Like" class="nav-like-img" src="/images/heart_icon.png" referrerpolicy="no-referrer" >
-              <%= tweet.likes.length %>
-            </a>
-            <a class="white-bg inline-ctr" href="/bookmarks/<%= tweet._id %>">
-              <img alt="Bookmark" class="nav-bm-img" src="/images/bookmark_icon.png" referrerpolicy="no-referrer" >
-            </a> 
-          </li>
-        </nav>
-      </section>
-      </ul>
-        <br>
-        <br>
-      
-        <div class="white-bg flex-ctr"></div>
-        <form class="white-bg" method="POST" action="/tweets/<%= tweet._id %>/replies">
-            <textarea id="reply-text" class="white-bg" name="content"></textarea>
-            <input id="tweet-btn" type="submit" value="Reply">
-        </form>
-      </div>
-      <br> 
-      <% tweet.replies.forEach(function(r) { %>
-        <ul>
-            <li class="hdr"><img alt="avatar" class="avatar" src="<%= r.userAvatar %>" referrerpolicy="no-referrer">
-                <%= r.userName %>
-                <%= r.createdAt.toLocaleDateString() %></li>
-            <li><%= r.content %></li>
+    <section class="white-bg flex-ctr">
+      <ul>
+
+    <section class="white-bg tweet-text-border">
+      <li>
+        <a class="white-bg" href="/tweet/<%= tweet._id %>">
+        <img alt="avatar" class="avatar white-bg inline-ctr" src="<%= tweet.userAvatar %>" referrerpolicy="no-referrer">
+        <div class="inline-ctr">
+          <div class="tweet-hdr-text">
+            <%= tweet.userName %>
+          </div>
+          <div class="tweet-date">
+            <%= tweet.createdAt.toLocaleDateString() %>
+          </div>
+          </div>
+        </a>
+          <% if (user?._id.equals(tweet.user)) { %>
+              <a class="white-bg inline-ctr" href="/tweets/<%= tweet._id %>/edit">
+                <img alt="Edit" class="nav-del-img" src="/images/edit_icon.png" referrerpolicy="no-referrer" >
+              </a>
+              <form class="white-bg inline-ctr" action="/tweets/<%= tweet._id %>?_method=DELETE" method="POST">
+                <input type="image" class="nav-del-img" alt="Delete" src="/images/delete_icon.png">
+              </form>
+          <% }; %>
+      </li>
+      <li class="white-bg post-text">
+        <%= tweet.content %>
+      </li>
+    </section>
+
+          <nav>
+            <li class="nav-space">
+                <a class="white-bg inline-ctr" href="/tweets/<%= tweet._id %>">
+                  <img alt="Reply" class="nav-reply-img" src="/images/reply_icon.png" referrerpolicy="no-referrer" >
+                  <%= tweet.replies.length %>
+                </a>
+              <a class="white-bg inline-ctr" href="/retweets/<%= tweet._id %>">
+                <img alt="Retweet" class="nav-rt-img" src="/images/retweet_icon.png" referrerpolicy="no-referrer" >
+              </a>
+              <a class="white-bg inline-ctr" href="/likes/<%= tweet._id %>">
+                <img alt="Like" class="nav-like-img" src="/images/heart_icon.png" referrerpolicy="no-referrer" >
+                <%= tweet.likes.length %>
+              </a>
+              <a class="white-bg inline-ctr" href="/bookmarks/<%= tweet._id %>">
+                <img alt="Bookmark" class="nav-bm-img" src="/images/bookmark_icon.png" referrerpolicy="no-referrer" >
+              </a>
+            </li>
+          </nav>
+            <br>
+            <br>
+
+            <div class="white-bg flex-ctr">
+              <img class="avatar" alt="avatar" src="<%= user.avatar %>" referrerpolicy="no-referrer">
+              <form class="white-bg" method="POST" action="/tweets/<%= tweet._id %>/replies">
+                  <textarea id="reply-text" class="white-bg" name="content"></textarea>
+            </div>
+                <div class="white-bg flex-ctr">
+                  <input id="tweet-btn" type="submit" value="Reply">
+                </div>
+              </form>
+              <br>
+              <br>
+
+              <% tweet.replies.forEach(function(r) { %>
+                <ul>
+                    <li class="hdr"><img alt="avatar" class="avatar" src="<%= r.userAvatar %>" referrerpolicy="no-referrer">
+                        <%= r.userName %>
+                        <%= r.createdAt.toLocaleDateString() %></li>
+                    <li><%= r.content %></li>
+                    <br>
+                    <br>
+                </ul>
+              <% }) %>
         </ul>
-      <% }) %>
-    <% } %>
+  <% } %>
 </main>
-<%- include('../partials/footer') %> 
+<%- include('../partials/footer') %>

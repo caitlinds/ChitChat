@@ -39,24 +39,13 @@ body > main h1:first-child {
 ul {
   align-items: center;
   justify-content: center;
-  list-style: none;
+  list-style-type: none;
   background-color: white;
 }
 
 li {
   background-color: white;
 }
-
-/* .login {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 34px;
-}
-
-.login img {
-  height: 30px;
-} */
 
 .avatar {
   display: inline;
@@ -90,6 +79,7 @@ li {
   background-color: rgb(231, 231, 232);
   padding: 15px;
   border-radius: 50%;
+  border-width: 1px;
 }
 
 #tweet-btn {
@@ -244,6 +234,8 @@ a {
 
 .post-text {
   display: block;
+  margin-top: 5px;
+  margin-left: 5px;
 }
 
 .tweet-text-border {
@@ -287,4 +279,28 @@ a {
 .profile-nav:hover {
   color: black;
   background-color: rgb(231, 231, 232);
+}
+
+.tweet-hdr-text {
+  background-color: white;
+  font-weight: bold;
+}
+
+.tweet-date{
+  background-color: white;
+  font-weight: lighter;
+  font-size: 14px;
+  margin-left: 7px;
+  margin-right: 140px;
+}
+
+.test {
+  display: block
+}
+
+#reply-text {
+  border-color: rgb(231, 231, 232);
+  width: 250px;
+  height: 50px;
+  border-radius: 10px;
 }

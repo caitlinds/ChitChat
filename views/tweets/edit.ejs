@@ -1,9 +1,21 @@
 <%- include('../partials/header') %>
 <main>
-    <form class="white-bg" action="/tweets/<%= tweet.id %>?_method=PUT" method="POST" autocomplete="off">
-        <textarea class="white-bg" name="content"><%= tweet.content %></textarea>
-        <br>
-        <button type="submit">Update Tweet</button>
-    </form>
+    <% if (user) { %>
+        <h1 class="page-title white-bg">Edit Tweet</h1> 
+        <ul>
+            <li>
+            <form class="white-bg flex-ctr" action="/tweets/<%= tweet.id %>?_method=PUT" method="POST" autocomplete="off">
+                <textarea id="tweet-text" class="white-bg" name="content"><%= tweet.content %>
+                </textarea>
+            </li>
+            <li class="flex-ctr">
+                <br>
+                <br>
+                <br>
+                <button id="tweet-btn" type="submit">Update Tweet</button>
+            </form>
+            </li>
+        </ul>
+    <% } %>
 </main>
 <%- include('../partials/footer') %>
