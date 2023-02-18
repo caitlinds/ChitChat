@@ -28,8 +28,6 @@ function add(req, res) {
           })
     } else {
       req.body.user = req.user._id;
-      req.body.userName = req.user.name;
-      req.body.userAvatar = req.user.avatar;
       for (let key in req.body) {
         if (req.body[key] === '') delete req.body[key];
       }
