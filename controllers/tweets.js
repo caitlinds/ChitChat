@@ -65,11 +65,11 @@ function deleteTweet(req, res, next) {
       function(err, tweet) {
         // Rogue user!
         if (!tweet) return res.redirect('/home');
-        // Remove the review using the remove method available on Mongoose arrays
+        // Remove the tweet using the remove method available on Mongoose arrays
         tweet.remove(req.params.id);
-        // Save the updated movie
+        // Save the updated tweet
         tweet.save(function(err) {
-          // Redirect back to the movie's show view
+          // Redirect back
           res.redirect('back');
         })
   });

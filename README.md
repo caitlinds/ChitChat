@@ -1,4 +1,4 @@
-# Twitter Clone App
+# ChitChat
 
 ## Description
 The Twitter Clone App mimics the functionality of the popular Twitter website. Twitter is a social networking site that allows people to post their thoughts with a large audience. 
