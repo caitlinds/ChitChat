@@ -28,7 +28,6 @@ The navigation bar on the left side of the app can be used to navigate to the us
 - Heroku
 
 ## Instructions
-- Access app here: https://twitter-clone-109.herokuapp.com/
 - Access app here: https://chitchat-cds.herokuapp.com/
 - Share messages with friends by posting a message
 - Like, bookmark, or repost interesting messages
