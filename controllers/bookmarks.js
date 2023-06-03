@@ -7,9 +7,15 @@ module.exports = {
 };
 
 function index(req, res) {
-  Tweet.find({"bookmarks": { $elemMatch:{ user: req.user._id } }}).sort(['createdAt', -1]).exec(function(err, tweets) {
+  Tweet.find({
+    "bookmarks": {
+      $elemMatch: {
+        user: req.user._id
+      }
+    }
+  }, function(err, tweets) {
     res.render('users/bookmarks', {title: "Bookmarks", tweets})
-  });
+  })
 }
 
 function add(req, res) {
