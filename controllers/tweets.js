@@ -70,7 +70,7 @@ function deleteTweet(req, res, next) {
         // Save the updated tweet
         tweet.save(function(err) {
           // Redirect back
-          res.redirect('back');
+          res.redirect('/home');
         })
   });
 }

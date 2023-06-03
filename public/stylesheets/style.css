@@ -50,7 +50,10 @@ li {
 .avatar {
   display: inline;
   border-radius: 50%;
-  height: 38px;
+  height: 46px;
+  margin-right: 3px;
+  margin-top: 5px;
+  margin-left: 5px;
 }
 
 #profile-avatar {
@@ -65,7 +68,7 @@ li {
 }
 
 .nav-logo {
-  height: 30px;
+  height: 45px;
   width: auto;
   margin: 20px;
   text-decoration: none;
@@ -146,6 +149,20 @@ a {
   border-radius: 50%;
 }
 
+.nav-rt-filled-img {
+  background-color: white;
+  height: 20px;
+  width: auto;
+  padding: 3px;
+}
+
+.nav-rt-filled-img:hover {
+  background-color: rgb(230 241 235);
+  color: rgb(83 183 129);
+  border: none;
+  border-radius: 50%;
+}
+
 #rt-text {
   font-size: 12px;
 }
@@ -164,6 +181,14 @@ a {
   border-radius: 50%;
 }
 
+.nav-like-filled-img {
+  background-color: white;
+  height: 16px;
+  width: auto;
+  padding: 5px 0px 5px 0px;
+  margin-right: 3px;
+}
+
 .nav-bm-img {
   background-color: white;
   height: 18px;
@@ -177,8 +202,16 @@ a {
   border-radius: 50%;
 }
 
+.nav-bm-filled-img {
+  background-color: white;
+  height: 12px;
+  width: 17px;
+  padding: 5px;
+}
+
 .nav-del-img {
-  width: 18px;
+  display: inline;
+  width: 16px;
   max-height: auto;
   height: auto;
   background-color: white;
@@ -186,7 +219,7 @@ a {
 }
 
 .nav-del-img:hover {
-  width: 18px;
+  width: 16px;
   max-height: auto;
   height: auto;
   background-color: white;
@@ -200,22 +233,30 @@ a {
 }
 
 .page-title {
-  font-size: 24px;
+  font-size: 28px;
   display: flex;
   justify-content: left;
   align-items: left;
 }
 
 #home-page-avatar {
+  height: 100px;
+  width: auto;
   border-radius: 50%;
   justify-content: center;
+  margin-right: 5px;
 }
 
 #tweet-text {
   border-color: rgb(231, 231, 232);
-  width: 400px;
-  height: 100px;
+  width: 420px;
+  height: 130px;
   border-radius: 10px;
+}
+
+textarea {
+  padding: 6px;
+  box-sizing: border-box;
 }
 
 .flex-ctr {
@@ -234,8 +275,14 @@ a {
 
 .post-text {
   display: block;
-  margin-top: 5px;
-  margin-left: 5px;
+  margin-top: -25px;
+  margin-left: 65px;
+}
+
+.profile-post-text {
+  display: block;
+  margin-top: -25px;
+  margin-left: 60px;
 }
 
 .tweet-text-border {
@@ -284,6 +331,11 @@ a {
 .tweet-hdr-text {
   background-color: white;
   font-weight: bold;
+  margin-top: -15px;
+}
+
+.tweet-hdr {
+  margin: 5px 5px 10px 5px;
 }
 
 .tweet-date{
@@ -291,7 +343,8 @@ a {
   font-weight: lighter;
   font-size: 14px;
   margin-left: 7px;
-  margin-right: 140px;
+  margin-top: -13px;
+  /* margin-right: 140px; */
 }
 
 .test {
@@ -303,4 +356,12 @@ a {
   width: 250px;
   height: 50px;
   border-radius: 10px;
+}
+
+.edit-delete {
+  display: flex;
+  justify-content: right;
+  margin-right: 5px;
+  margin-top: -42px;
+  margin-bottom: 30px;
 }

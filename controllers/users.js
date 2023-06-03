@@ -6,7 +6,7 @@ module.exports = {
 };
 
 function index(req, res) {
-  Tweet.find({ user: req.user._id }, function(err, tweets) {
+  Tweet.find({ user: req.user._id }).sort([['createdAt', -1]]).exec(function(err, tweets) {
     res.render('users/profile', {title: 'Profile', tweets})
-  })
+  });
 }

@@ -8,13 +8,15 @@ In this app, users can share messages with friends by posting a message from the
 The navigation bar on the left side of the app can be used to navigate to the user's profile page, which will show all of the user's posts and likes. The bookmark page can also be visited from the navigation bar, which will show all messages saved as a bookmark.
 
 ## Screenshots
-![ChitChat Log In](https://i.imgur.com/vBtWBty.png)
+![ChitChat Log In](https://i.imgur.com/QztwH79.png)
 
-![ChitChat Home Page](https://i.imgur.com/gKPUpSO.png)
+![ChitChat Home Page](https://i.imgur.com/Kfw3Xjh.png)
 
-![ChitChat Profile Page](https://i.imgur.com/YyJ88RA.png)
+![ChitChat Tweet Thread](https://i.imgur.com/2jqK4Di.png)
 
-![ChitChat Tweet Thread](https://i.imgur.com/WdkNCxv.png)
+![ChitChat Likes Page](https://i.imgur.com/Udtd11Y.png)
+
+![ChitChat Bookmarks Page](https://i.imgur.com/5Cof7ht.png)
 
 ## Technologies Used
 - Javascript
@@ -37,5 +39,4 @@ The navigation bar on the left side of the app can be used to navigate to the us
 ## Icebox Features
 Future improvements:
 - Make mobile responsive
-- Show liked and bookmarked posts using icons
 - Improve CSS 
